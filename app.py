@@ -1,5 +1,5 @@
 from flask import Flask, request
-import pickle
+from model.comparer import Comparer
 app = Flask(__name__)
 
 
@@ -15,7 +15,11 @@ def compare():
         data = request.json
         a = data['a']
         b = data['b']
-        c = pickle.load(open("serialized_models/c_model.p", "rb"))
+        c = Comparer()
         c.model.run_pipeline(a, b)
 
         return('a: ' + str(a) + '\nb: ' + str(b) + '\n%s\n' % str(c.model.outputs))
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)

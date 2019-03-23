@@ -1,4 +1,4 @@
-from leven import levenshtein
+from Levenshtein import distance
 import difflib
 
 from model import Member
@@ -15,7 +15,7 @@ class LevenshteinDistanceEstimator(Member):
 
     def run(self, a, b):
         try:
-            self.output = levenshtein(string_cleaner(a), string_cleaner(b))
+            self.output = distance(string_cleaner(a), string_cleaner(b))
         except:
             self.output = 'Error'
 

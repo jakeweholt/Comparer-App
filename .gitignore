@@ -4,3 +4,4 @@
 *.egg-info/
 *.pyc
 *DS_Store*
+deployment_instructions
