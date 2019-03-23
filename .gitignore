@@ -2,3 +2,5 @@
 *.ipynb
 *__pycache__/
 *.egg-info/
+*.pyc
+*DS_Store*
