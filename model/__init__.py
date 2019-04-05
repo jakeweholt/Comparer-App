@@ -27,9 +27,10 @@ class Model:
 
     def __init__(self):
         self.pipeline = Pipeline()
-        self.outputs = dict()
 
     def run_pipeline(self, a, b):
+        outputs = {}
         for member in self.pipeline.members:
             member.run(a, b)
-            self.outputs[member.name] = member.output
+            outputs[member.name] = member.output
+        return(outputs)
