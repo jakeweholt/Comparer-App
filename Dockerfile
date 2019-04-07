@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install gcc
 
 RUN pip install --upgrade setuptools
 
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements/docker_requirements.txt
 
 RUN pip install -e .
 
