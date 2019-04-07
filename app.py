@@ -1,14 +1,16 @@
 from flask import Flask, request, jsonify
 from model.comparer import Comparer
 from flask_cors import CORS
-
+import os
+import requests
+import boto3
 app = Flask(__name__)
 CORS(app)
 
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Hello World!'
 
 
 @app.route('/compare', methods=['POST'])

@@ -5,3 +5,5 @@ numpy==1.16.2
 pandas==0.24.2
 python-Levenshtein==0.12.0
 Flask-Cors==3.0.7
+botocore>=1.4.37
+boto3>=1.0.0
