@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 from model.comparer import Comparer
+from model.matcher import Matcher
 from flask_cors import CORS
-import os
-import requests
-import boto3
 app = Flask(__name__)
 CORS(app)
 
@@ -38,6 +36,29 @@ def compare():
 
         return(response)
 
+@app.route('/match', methods=['POST'])
+def match():
+    comparison_metric = 'similarity_probability'
+    if request.method == 'POST':
+
+        # Get json as dict from input data.
+        data = request.json
+        x = data['x']
+        search_base = data['search_base']
+
+        m = Matcher()
+
+        # Dump to JSON and return
+        scores = dict()
+        for val in search_base:
+            scores[val] = m.model.run_pipeline(x, val)
+
+        max_match = max(scores, key = lambda x: scores.get(x)[comparison_metric])
+        response = jsonify({'x':x,
+                            'most_likely_match':max_match,
+                            'scores':scores})
+
+        return(response)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
