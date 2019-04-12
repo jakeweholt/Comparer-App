@@ -7,6 +7,7 @@ Clone repo. In the comparer root directory, run the following:
 ```
 pip install virtualenv
 virtualenv --python=/location/of/interpreter/python3 venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 ## Testing Changes Locally
