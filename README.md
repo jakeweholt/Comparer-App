@@ -6,7 +6,7 @@ This is a flask app for computing string similarities.
 Clone repo. In the comparer root directory, run the following:
 ```
 pip install virtualenv
-virtualenv --python=/lovation/of/interpreter/python3 venv
+virtualenv --python=/location/of/interpreter/python3 venv
 pip install -r requirements.txt
 ```
 ## Testing Changes Locally
