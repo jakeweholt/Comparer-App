@@ -19,4 +19,4 @@ Log in to the AWS console, go to ECS, go to clusters, select comparer-prod, and 
 
 ## Accessing the endpoint
 
-Try this curl command: `curl -X POST -H "Content-Type: application/json" http://bigstuffedanimal.com/compare -d '{"a": {"email": "name@gmail.com","last_4_ssn": "0011"}, "b": {"email":"mane@gmail.com","last_4_ssn": "0000"}}'`
+Try this curl command: `curl -X POST -H "Content-Type: application/json" http://api.bigstuffedanimal.com/compare -d '{"a": {"email": "name@gmail.com","last_4_ssn": "0011"}, "b": {"email":"mane@gmail.com","last_4_ssn": "0000"}}'`
