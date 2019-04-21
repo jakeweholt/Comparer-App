@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from model.comparer import Comparer
 from model.matcher import Matcher
+from model.string_mapper import MapperDataIn, StringMapper, StringReducer
 from flask_cors import CORS
+import json
 app = Flask(__name__)
 CORS(app)
 
@@ -59,6 +61,23 @@ def match():
                             'scores':scores})
 
         return(response)
+
+
+@app.route('/string_mapper', methods=['POST'])
+def string_mapper():
+    if request.method == 'POST':
+        # Get json as dict from input data.
+        data = request.json
+        dirty_data = data['dirty_data']
+        clean_data_map = data['clean_data_map']
+
+        t = MapperDataIn(clean_data_map, dirty_data)
+        m = StringMapper(t)
+        m.map()
+        sr = StringReducer(m)
+        sr.reduce()
+
+        return sr.dataframe_output.to_json()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
